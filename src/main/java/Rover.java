@@ -1,6 +1,5 @@
 import java.util.*;
 
-// Classe Rover avec patterns Command et Strategy
 public class Rover {
     private int x;
     private int y;
@@ -33,15 +32,12 @@ public class Rover {
         // Wrap et gestion des obstacles peuvent être ajoutés ici
     }
     public void turn(char turnCommand) {
-        // On s'assure que l'ordre des directions est N, E, S, W pour un cycle complet
         List<Character> directions = new ArrayList<>(Arrays.asList('N', 'E', 'S', 'W'));
 
         int currentDirectionIndex = directions.indexOf(direction);
         if (turnCommand == 'l') {
-            // Tourner à gauche signifie prendre la direction précédente dans la liste
             currentDirectionIndex = (currentDirectionIndex - 1 + directions.size()) % directions.size();
         } else if (turnCommand == 'r') {
-            // Tourner à droite signifie prendre la direction suivante dans la liste
             currentDirectionIndex = (currentDirectionIndex + 1) % directions.size();
         }
         direction = directions.get(currentDirectionIndex);
@@ -70,11 +66,9 @@ public class Rover {
                 throw new IllegalStateException("Direction inconnue: " + this.direction);
         }
 
-        // Mise à jour de la direction avant d'utiliser la stratégie
         direction = reverseDirection;
         this.moveStrategies.get(reverseDirection).move(this);
 
-        // Retour à la direction originale après le mouvement
         direction = this.direction;
     }
 

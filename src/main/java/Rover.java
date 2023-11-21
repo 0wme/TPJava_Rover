@@ -47,7 +47,6 @@ public class Rover {
 
 
     private void reverseMovement(MovementStrategy strategy) {
-        // Déterminez la direction opposée pour le mouvement inverse
         char reverseDirection;
         switch (this.direction) {
             case 'N':
@@ -73,7 +72,6 @@ public class Rover {
     }
 
 
-    // Getters et setters pour x et y
     public int getX() { return x; }
     public void setX(int x) { this.x = x; }
     public int getY() { return y; }

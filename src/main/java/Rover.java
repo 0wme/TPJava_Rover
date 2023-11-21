@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 // Classe Rover avec patterns Command et Strategy
@@ -15,7 +17,8 @@ public class Rover {
         moveStrategies = new HashMap<>();
         moveStrategies.put('N', new MoveNorth());
         moveStrategies.put('S', new MoveSouth());
-        // ... ajouter les autres stratégies
+        moveStrategies.put('E', new MoveEast());
+        moveStrategies.put('W', new MoveWest());
     }
 
     public void move(char command) {
@@ -25,10 +28,31 @@ public class Rover {
                 strategy.move(this);
             } else if (command == 'b') {
                 reverseMovement(strategy);
+            } else if (command == 'l') {
+                turn(command);
+            } else if (command == 'r') {
+                turn(command);
             }
+
         }
         // Wrap et gestion des obstacles peuvent être ajoutés ici
     }
+    public void turn(char turnCommand) {
+        int directionsCount = moveStrategies.size();
+        List<Character> directions = new ArrayList<>(moveStrategies.keySet());
+
+        int currentDirectionIndex = directions.indexOf(direction);
+        if (turnCommand == 'l') {
+            // Tourner à gauche signifie prendre la direction précédente dans la liste
+            currentDirectionIndex = (currentDirectionIndex - 1 + directionsCount) % directionsCount;
+        } else if (turnCommand == 'r') {
+            // Tourner à droite signifie prendre la direction suivante dans la liste
+            currentDirectionIndex = (currentDirectionIndex + 1) % directionsCount;
+        }
+        direction = directions.get(currentDirectionIndex);
+    }
+
+
 
     private void reverseMovement(MovementStrategy strategy) {
         // Inverser le mouvement en ajustant la stratégie de mouvement
@@ -41,10 +65,6 @@ public class Rover {
     public int getY() { return y; }
     public void setY(int y) { this.y = y; }
     public char getDirection() { return direction; }
-    public void setDirection(char direction) { this.direction = direction; }
-
-    public void addStrategy(char n, MoveSouth moveNorth) {
 
 
-    }
 }

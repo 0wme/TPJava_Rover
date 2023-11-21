@@ -43,7 +43,7 @@ public class Rover {
     public char getDirection() { return direction; }
     public void setDirection(char direction) { this.direction = direction; }
 
-    public void addStrategy(char n, MoveNorth moveNorth) {
+    public void addStrategy(char n, MoveSouth moveNorth) {
 
 
     }

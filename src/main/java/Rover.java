@@ -1,46 +1,45 @@
+import java.util.HashMap;
+import java.util.Map;
+
+// Classe Rover avec patterns Command et Strategy
 public class Rover {
     private int x;
     private int y;
     private char direction;
+    private Map<Character, MovementStrategy> moveStrategies;
 
     public Rover(int x, int y, char direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;
+        moveStrategies = new HashMap<>();
+        moveStrategies.put('N', new MoveNorth());
+        moveStrategies.put('S', new MoveSouth());
+        // ... ajouter les autres stratégies
     }
-
 
     public void move(char command) {
-        if (command == 'f') {
-            if (direction == 'N') y++;
-            else if (direction == 'S') y--;
-            else if (direction == 'E') x++;
-            else if (direction == 'W') x--;
-        } else if (command == 'b') {
-            if (direction == 'N') y--;
-            else if (direction == 'S') y++;
-            else if (direction == 'E') x--;
-            else if (direction == 'W') x++;
-        } else if (command == 'l') {
-            if (direction == 'N') direction = 'W';
-            else if (direction == 'S') direction = 'E';
-            else if (direction == 'E') direction = 'N';
-            else if (direction == 'W') direction = 'S';
-        } else if (command == 'r') {
-            if (direction == 'N') direction = 'E';
-            else if (direction == 'S') direction = 'W';
-            else if (direction == 'E') direction = 'S';
-            else if (direction == 'W') direction = 'N';
+        MovementStrategy strategy = moveStrategies.get(direction);
+        if (strategy != null) {
+            if (command == 'f') {
+                strategy.move(this);
+            } else if (command == 'b') {
+                reverseMovement(strategy);
+            }
         }
+        // Wrap et gestion des obstacles peuvent être ajoutés ici
     }
 
-    public void turn(char command) {
-        if (command == 'l') {
-            // ... (changer la direction vers la gauche)
-        } else if (command == 'r') {
-            // ... (changer la direction vers la droite)
-        }
+    private void reverseMovement(MovementStrategy strategy) {
+        // Inverser le mouvement en ajustant la stratégie de mouvement
+        // Cela pourrait être implémenté en inversant les coordonnées ou en utilisant une autre stratégie
     }
 
-
+    // Getters et setters pour x et y
+    public int getX() { return x; }
+    public void setX(int x) { this.x = x; }
+    public int getY() { return y; }
+    public void setY(int y) { this.y = y; }
+    public char getDirection() { return direction; }
+    public void setDirection(char direction) { this.direction = direction; }
 }

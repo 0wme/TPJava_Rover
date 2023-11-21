@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public interface MovementStrategy {
+interface MovementStrategy {
+    void move(Rover rover);
 }

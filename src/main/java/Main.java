@@ -3,7 +3,6 @@ public class Main {
         // Initialisation du rover à la position (0,0) orienté vers le Nord ('N')
         Rover rover = new Rover(0, 0, 'N');
 
-
         // Supposons que c'est la commande envoyée pour le déplacement du rover
         String commands = "ffrff";
 

@@ -1,3 +1,7 @@
 
+„
+java:S4165N"gRemove this useless assignment; "direction" already holds the assigned value along all execution paths.(“ïï8ˆ°î¿1
 L
-java:S11729"/Remove this unused method parameter "strategy".(˜û·å8ƒš¿1
+java:S11725"/Remove this unused method parameter "strategy".(˜û·å8°î¿1
+L
+java:S1656N"/Remove or correct this useless self-assignment.(“ïï8“°î¿1

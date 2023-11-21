@@ -11,3 +11,7 @@ P
  src/main/java/MovementNorth.java,c/d/cdd5a34878a1669eb870e7e2b6ee62d33726af3a
 P
  src/main/java/MovementSouth.java,e/e/eefd6ba60818f2b6d55cb21a81c39e651e52573a
+G
+src/main/java/Main.java,e/4/e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
+O
+src/main/java/MovementEast.java,7/9/7921d719bff36e49b9f0f77ba605632ec43f7c3c
